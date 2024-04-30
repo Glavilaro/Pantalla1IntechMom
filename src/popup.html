@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="output.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        body {
+            font-family: "Roboto", sans-serif;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body class="bg-white h-screen">
+    <div class="min-h-screen flex">
+        <!-- Barra lateral -->
+        <div class="w-full w-1/8 bg-beige-lat bg-contain text-gray-800 min-h-full">
+            <ul class="py-6 space-y-6">
+                <li class="px-4 py-3 hover:bg-salmon-claro rounded-md text-3xl text-center text-azul-text"><a
+                        href="#"><i class='bx bx-square text-2xl'></i></a></li>
+
+                <div
+                    class="group relative text-center hover:bg-salmon-claro rounded-md text-3xl text-azul-text x-4 py-3">
+                    <i class='bx bx-user text-2xl'></i>
+                    <span
+                        class="absolute w-auto p-2 m-2 min-w-max left-full top-1/2 transform -translate-y-1/2 bg-salmon-osc text-azul-text text-sm rounded-md shadow-lg hidden group-hover:block z-10">
+                        PERFIL
+                    </span>
+                </div>
+
+                <div
+                    class="group relative text-center hover:bg-salmon-claro rounded-md text-3xl text-azul-text x-4 py-3">
+                    <i class='bx bx-briefcase text-2xl'></i>
+                    <span
+                        class="absolute w-auto p-2 m-2 min-w-max left-full top-1/2 transform -translate-y-1/2 bg-salmon-osc text-azul-text text-sm rounded-md shadow-lg hidden group-hover:block z-10">
+                        PROSPECTACION
+                    </span>
+                </div>
+
+                <div
+                    class="group relative text-center hover:bg-salmon-claro rounded-md text-3xl text-azul-text x-4 py-3">
+                    <i class='bx bxs-data 2xl'></i></a></li>
+                    <span
+                        class="absolute w-auto p-2 m-2 min-w-max left-full top-1/2 transform -translate-y-1/2 bg-salmon-osc text-azul-text text-sm rounded-md shadow-lg hidden group-hover:block z-10">
+                        DATA
+                    </span>
+                </div>
+            </ul>
+        </div>
+
+        <!--NAV CLARO HORIZONTAL-->
+        <div class="w-full p-0 gap-3">
+            <div class="relative bg-blanco px-2 py-3 my-2 flex justify-between items-center drop-shadow-md mb-1">
+                <ul class="flex m-3 ">
+                    <li class=" text-azul-text font-bold text-lg ml-5 gap-2">Enter Data</li>
+                    <li class=" text-azul-text font-bold text-lg ml-2 border-r-4 px-1 border-salmon-oscuro">Maps</li>
+                    <li class="text-salmon-osc text-lg ml-2">Perfil</li>
+                </ul>
+                <div class="relative group">
+                    <button
+                        class=" text-azul-text flex border-salmon-oscuro  py-2 px-6 rounded-xl border-2 hover:bg-salmon-claro font-bold	">
+                        <i class='bx bx-user-circle text-2xl font-bold space-x-2'></i>
+                        USER ▼
+                    </button>
+                    <ul
+                        class="absolute top-0 right-0 hidden group-hover:block z-30 bg-beige-lat border mt-2 py-2 w-40 ">
+                        <li><a href="#" class="block text-sm px-1 py-1 text-azul-text hover:bg-gray-200">Perfil</a></li>
+                        <!-- <li><a href="#" class="block text-sm px-1 py-1 text-gray-800 hover:bg-gray-200">Configuración</a></li>-->
+                        <li><a href="#"
+                                class="block text-sm px-1 py-1 text-azul-text hover:bg-gray-200 border-y border-salmon-oscuro">Cerrar
+                                sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex h-screen">
+                <!-- Contenedor del perfil -->
+                <div class="relative h-full w-1/2 m-2 py-2 border-2 bg-gris-fondo bg-contain bg-center mx-8 mb-1">
+                    <!-- Botón para abrir modal -->
+                    <button id="btn-abrir-modal"
+                        class="absolute top-0 right-0 m-2 p-2 bg-transparent  text-azul-text hover:bg-gray-200 rounded-full"
+                        onclick="abrirPopup()">
+                        <i class='bx bx-edit text-2xl'></i>
+                    </button>
+                    <!-- Imagen de perfil -->
+                    <img src="./imagenes/perfil1.png" alt="Foto de perfil"
+                        class="w-24 h-24 py-3 px-3 rounded-full mx-auto mb-4">
+
+                    <h1 id="NombreTitulo" class="text-center text-2xl m-0  text-azul-text font-bold">Nombre
+                        emprendimiento</h1>
+                    <!-- Formulario de información -->
+                    <div class="p-10 flex flex-wrap overflow-auto">
+                        <!-- Ubicación y Correo electrónico -->
+                        <div class="w-full md:w-1/2 px-2 mb-3 relative">
+                            <i
+                                class="bx bx-map text-2xl absolute right-3 top-1/2 transform -translate-y-1/2 text-azul-text"></i>
+                            <input type="text" id="nombre" name="nombre" placeholder="Ubicación"
+                                class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-10 text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                required readonly>
+                        </div>
+                        <div class="w-full md:w-1/2 px-2 mb-3 relative">
+                            <i
+                                class="bx bx-envelope text-2xl absolute right-3 top-1/2 transform -translate-y-1/2 text-azul-text"></i>
+                            <input type="email" id="email" name="email" placeholder="Email"
+                                class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-10 text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                required readonly>
+                        </div>
+                        <!-- Página web y Red social -->
+                        <div class="w-full md:w-1/2 px-2 mb-3 relative">
+                            <i
+                                class="bx bx-globe text-2xl absolute right-3 top-1/2 transform -translate-y-1/2 text-azul-text"></i>
+                            <input type="text" id="pagina" name="pagina" placeholder="Página web"
+                                class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-10 text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                required readonly>
+                        </div>
+
+                        <div class="w-full md:w-1/2 px-2 mb-3 relative">
+                            <i
+                                class="bx bx-at text-2xl absolute right-3 top-1/2 transform -translate-y-1/2 text-azul-text"></i>
+                            <input type="text" id="redSocial" name="redSocial" placeholder="Red Social"
+                                class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-10 text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                required readonly>
+                        </div>
+
+                        <!-- Contacto y Rubro -->
+                        <div class="w-full md:w-1/2 px-2 mb-3 relative">
+                            <i
+                                class="bx bx-phone text-2xl absolute right-3 top-1/2 transform -translate-y-1/2 text-azul-text"></i>
+                            <input type="text" id="phone" name="phone" placeholder="Contacto"
+                                class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-10 text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                required readonly>
+                        </div>
+                        <div class="w-full md:w-1/2 px-2 mb-3 relative">
+                            <i
+                                class="bx bx-briefcase text-2xl absolute right-3 top-1/2 transform -translate-y-1/2 text-azul-text"></i>
+                            <input type="text" id="rubro" name="rubro" placeholder="Rubro"
+                                class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-10 text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                required readonly>
+                        </div>
+
+                        <h2 class="text-md text-azul-text font-semibold">Descripción del negocio:</h2>
+                        <textarea id="descripcionText" rows="2" cols="50"
+                            class="resize-none bg-gris-fondo text-gray-700"
+                            placeholder="Ingrese la descripción de su negocio aquí" required readonly></textarea>
+
+                        <h2 class="text-azul-text text-md font-semibold">servicios ofrecidos:</h2>
+                        <div class="flex">
+                            <div class="w-full md:w-1/2 px-1 mb-2">
+                                <input type="text" id="Productos_1" name="Productos_1" placeholder="productos"
+                                    class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro w-full py-2 px-3 text-azul-text leading-tight focus:outline-none focus:shadow-outline rounded-lg"
+                                    required readonly>
+                            </div>
+                            <div class="w-full md:w-1/2 px-2 mb-3">
+                                <input type="text" id="Productos_2" name="Productos_2" placeholder="productos"
+                                    class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro w-full py-2 px-3 text-azul-text leading-tight focus:outline-none focus:shadow-outline rounded-lg"
+                                    required readonly>
+                            </div>
+                            <div class="w-full md:w-1/2 px-2 mb-3">
+                                <input type="text" id="Productos_3" name="Productos_3" placeholder="productos"
+                                    class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-3 text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                    required readonly>
+                            </div>
+                        </div>
+                        <h2 class="text-azul-text text-md font-semibold ">Canales de marketing:</h2>
+                        <div class="flex">
+
+                            <div class="w-full md:w-1/2 px-1 mb-2">
+                                <input type="text" id="Canal_1" name="Canal_1" placeholder="instagram"
+                                    class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro w-full py-2 px-3 text-azul-text leading-tight focus:outline-none focus:shadow-outline rounded-lg"
+                                    required readonly>
+                            </div>
+
+                            <div class="w-full md:w-1/2 px-2 mb-3">
+                                <input type="text" id="canal_2" name="canal_2" placeholder="linkedin"
+                                    class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro w-full py-2 px-3 text-azul-text leading-tight focus:outline-none focus:shadow-outline rounded-lg"
+                                    required readonly>
+                            </div>
+                            <div class="w-full md:w-1/2 px-2 mb-3">
+                                <input type="text" id="canal_3" name="canal_3" placeholder="facebook"
+                                    class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-3 text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                    required readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- seccion que buscas pantalla 2*******************************************************************************-->
+                <div class="relative h-full w-1/2 m-2 py-2 border-2 bg-gris-fondo bg-contain bg-center mx-8">
+                    <!-- Icono de cierre -->
+                    <button id="btn-open-modal"
+                        class="absolute top-0 right-0 m-2 p-2 bg-transparent  text-azul-text hover:bg-gray-200 rounded-full"
+                        onclick="abrirPopup()">
+                        <i class='bx bx-edit text-2xl'></i>
+                    </button>
+
+                    <img src="./imagenes/perfil2.png" alt="Foto de perfil"
+                        class="w-24 h-25 py-3 px-3 rounded-full mx-auto mb-4">
+
+                    <h2 class="text-2xl text-azul-text mb-4 font-bold text-center">¿Qué busco?</h2>
+                    <!-- Contenido de la segunda pantalla -->
+                    <div class="p-10 flex flex-wrap overflow-auto">
+                        <!-- Ubicación y Correo electrónico -->
+
+
+                        <div class="w-full md:w-1/2 px-2 mb-3">
+                            <input type="text" id="nombre" name="nombre" placeholder="Ubicación"
+                                class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro w-full py-2 px-3 text-azul-text leading-tight focus:outline-none focus:shadow-outline rounded-lg"
+                                required readonly>
+                        </div>
+                        <div class="w-full md:w-1/2 px-2 mb-3">
+                            <input type="email" id="email" name="email" placeholder="Rubro"
+                                class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-3 text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                required readonly>
+                        </div>
+                        <!-- Página web y Red social -->
+                        <div class="w-full md:w-1/2 px-2 mb-3">
+                            <input type="text" id="pagina" name="pagina" placeholder="Rango de precios"
+                                class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-3  text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                required readonly>
+                        </div>
+                        <div class="w-full md:w-1/2 px-2 mb-3">
+                            <input type="text" id="redSocial" name="redSocial" placeholder="Rubro"
+                                class="shadow appearance-none border bg-gris-fondo border-salmon-oscuro rounded-lg w-full py-2 px-3 text-azul-text leading-tight focus:outline-none focus:shadow-outline"
+                                required readonly>
+                        </div>
+                        <h2 class="text-md text-azul-text font-semibold">Palabras clave:</h2>
+                        <textarea id="descripcionText" rows="2" cols="50" class="bg-gris-fondo text-gray-700"
+                            placeholder="ingrese palabras claves" required readonly></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--popup pantalla 1-->
+            <!--******************************************************************************************************************+********-->
+            <dialog id="modal" class="border-2 p-15">
+                <div class="bg-white p-20 shadow-md w-full h-full mx-4 my-1 border border-salmon-oscuro">
+                    <h2 class=" text-xl text-center">¿Que ofrezco?</h2>
+                    <div class="mb-2">
+                        <label for="tituloPopup" class="flex text-salmon-oscuro text-sm font-bold mb-1 p-2.5">Nombre
+                            emprendimiento:</label>
+                        <input type="text" id="tituloPopup" name="tituloPopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-2">
+                        <label for="nombrePopup"
+                            class="flex text-salmon-oscuro text-sm font-bold mb-1 p-2.5">Ubicacion:</label>
+                        <select id="nombrePopup" name="nombrePopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="opcion1">Opción 1</option>
+                            <option value="opcion2">Opción 2</option>
+                            <option value="opcion3">Opción 3</option>
+                            <option value="opcion4">Opción 4</option>
+                            <option value="opcion5">Opción 5</option>
+                        </select>
+                    </div>
+                    <!--email-->
+                    <div class="mb-2">
+                        <label for="emailPopup" class="flex text-gray-700 text-sm font-bold mb-1">Email:</label>
+                        <input type="email" id="emailPopup" name="emailPopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <!--pagina web-->
+                    <div class="mb-2">
+                        <label for="paginaWebPopup" class="flex text-gray-700 text-sm font-bold mb-1">Pagina
+                            Web:</label>
+                        <input type="text" id="paginaWebPopup" name="paginaWebPopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <!--redes sociales-->
+                    <div class="mb-2">
+                        <label for="redSocialPopup" class="flex text-gray-700 text-sm font-bold mb-1">red
+                            social:</label>
+                        <input type="text" id="redSocialPopup" name="redSocialPopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <!--contacto-->
+                    <div class="mb-2">
+                        <label for="phonePopup" class="flex text-gray-700 text-sm font-bold mb-1">telefono:</label>
+                        <input type="tel" id="phonePopup" name="phonePopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+
+                    <!--rubro-->
+                    <div class="mb-2">
+                        <label for="rubroPopup" class="flex text-gray-700 text-sm font-bold mb-1">rubro:</label>
+                        <select id="rubroPopup" name="rubroPopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="opcion1">Opción 1</option>
+                            <option value="opcion2">Opción 2</option>
+                            <option value="opcion3">Opción 3</option>
+                            <option value="opcion4">Opción 4</option>
+                            <option value="opcion5">Opción 5</option>
+                        </select>
+                    </div>
+                    <div class="w-full px-2 mb-3">
+                        <div class="modal-content">
+                            <h2 class="text-2xl text-azul-text font-bold">Descripción del negocio:</h2>
+                            <textarea id="user" rows="4" cols="50" placeholder="Escribe aquí"
+                                class="bg-white border border-salmon-oscuro rounded-lg p-2"></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>servicios ofrecidos</h2>
+                        <div class="mb-2">
+                            <label for="ProductosWebPopup" class="flex text-gray-700 text-sm font-bold mb-1">producto
+                                1:</label>
+                            <input type="text" id="ProductosWebPopup" name="ProductosWebPopup"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                        <!--producto2-->
+                        <div class="mb-2">
+                            <label for="productosPopup" class="flex text-gray-700 text-sm font-bold mb-1">producto
+                                2:</label>
+                            <input type="text" id="productosPopup" name="productosPopup"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                        <!--producto 3-->
+                        <div class="mb-2">
+                            <label for="productosModal" class="flex text-gray-700 text-sm font-bold mb-1">producto
+                                3:</label>
+                            <input type="tel" id="productosModal" name="productosModal"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                    </div>
+                    <!--instagram-->
+                    <h2>Canales de marketing</h2>
+                    <div class="mb-2">
+                        <label for="marketingPopUp" class="flex text-gray-700 text-sm font-bold mb-1">instagram:</label>
+                        <input type="text" id="marketingPopUp" name="marketingPopUp"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <!--linkedin-->
+                    <div class="mb-2">
+                        <label for="marketingPopUp_1"
+                            class="flex text-gray-700 text-sm font-bold mb-1">linkedin:</label>
+                        <input type="text" id="marketingPopUp_1" name="marketingPopUp_1"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <!--facebook 3-->
+                    <div class="mb-2">
+                        <label for="marketingPopUp_2"
+                            class="flex text-gray-700 text-sm font-bold mb-1">facebook:</label>
+                        <input type="tel" id="marketingPopUp_2" name="marketingPopUp_2"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <button id="btn-cerrar-modal"
+                        class="bg-salmon-oscuro p-3 text-gray rounded-lg items-center">Guardar</button>
+                </div>
+            </dialog>
+            <!--POPUP QUE BUSCO paantalla 2----------------------------------------------------------------->
+
+
+
+            <dialog id="popup" class="border-2 p-20 mb-1">
+                <div class="bg-white p-24 shadow-md w-full h-full mx-5 my-1 border border-salmon-oscuro">
+                    <h2 class=" text-xl text-center">¿Que busco?</h2>
+                    
+                    <div class="mb-2">
+                        <label for="nombrePopup"
+                            class="flex text-salmon-oscuro text-sm font-bold mb-1 p-2.5">Ubicacion:</label>
+                        <select id="nombrePopup" name="nombrePopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="opcion1">Opción 1</option>
+                            <option value="opcion2">Opción 2</option>
+                            <option value="opcion3">Opción 3</option>
+                            <option value="opcion4">Opción 4</option>
+                            <option value="opcion5">Opción 5</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="nombrePopup"
+                            class="flex text-salmon-oscuro text-sm font-bold mb-1 p-2.5">rubro:</label>
+                        <select id="nombrePopup" name="nombrePopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="opcion1">Opción 1</option>
+                            <option value="opcion2">Opción 2</option>
+                            <option value="opcion3">Opción 3</option>
+                            <option value="opcion4">Opción 4</option>
+                            <option value="opcion5">Opción 5</option>
+                        </select>
+                    </div>
+
+
+                    <div class="mb-2">
+                        <label for="nombrePopup"
+                            class="flex text-salmon-oscuro text-sm font-bold mb-1 p-2.5">Rango de precios:</label>
+                        <select id="nombrePopup" name="nombrePopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="opcion1">Opción 1</option>
+                            <option value="opcion2">Opción 2</option>
+                            <option value="opcion3">Opción 3</option>
+                            <option value="opcion4">Opción 4</option>
+                            <option value="opcion5">Opción 5</option>
+                        </select>
+                    </div>
+
+
+                    <div class="mb-2">
+                        <label for="nombrePopup"
+                            class="flex text-salmon-oscuro text-sm font-bold mb-1 p-2.5">Rubro:</label>
+                        <select id="nombrePopup" name="nombrePopup"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="opcion1">Opción 1</option>
+                            <option value="opcion2">Opción 2</option>
+                            <option value="opcion3">Opción 3</option>
+                            <option value="opcion4">Opción 4</option>
+                            <option value="opcion5">Opción 5</option>
+                        </select>
+                    </div>
+                    <div class="w-full px-2 mb-3">
+                        <div class="modal-content">
+                            <h2 class="text-2xl text-azul-text font-bold">Descripción del negocio:</h2>
+                            <textarea id="user" rows="4" cols="50" placeholder="Escribe aquí"
+                                class="bg-white border border-salmon-oscuro rounded-lg p-2"></textarea>
+                        </div>
+
+                     
+
+
+                    <button id="btn_close_modal"
+                        class="bg-salmon-oscuro p-3 text-gray rounded-lg items-center">Guardar</button>
+                </div>
+            </dialog>
+
+            <script type="module" src="main.js"></script>
+        </body>
+
+</html>

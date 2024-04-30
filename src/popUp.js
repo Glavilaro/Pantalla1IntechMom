@@ -1,0 +1,11 @@
+export const nombrePopup = document.querySelector('#nombrePopup');
+export const emailPopup = document.querySelector('#emailPopup');
+export const paginaWebPopup = document.querySelector('#paginaWebPopup');
+export const redSocialPopup = document.querySelector('#redSocialPopup');
+export const phonePopup = document.querySelector('#phonePopup');
+export const rubroPopup = document.querySelector('#rubroPopup');
+export const productosPopup = document.querySelector('#productosPopup');
+export const productosModal = document.querySelector('#productosModal');
+export const marketingPopUp = document.querySelector('#marketingPopUp');
+export const marketingPopUp_1 = document.querySelector('#marketingPopUp_1');
+export const marketingPopUp_2 = document.querySelector('#marketingPopUp_2');
